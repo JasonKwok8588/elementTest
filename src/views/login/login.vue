@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import {loginApi} from '../../request/api'
+import {loginApi} from '../../request/api';
 
 export default {
   methods: {
