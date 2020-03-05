@@ -27,6 +27,7 @@
 import Bus from "./bus";
 export default {
   created() {
+    //   监听自定义事件
       Bus.$on('retract', res =>{
           this.isRetract = res;
       })
@@ -132,6 +133,7 @@ export default {
   left: 0;
   overflow-y: auto;
 }
+// 当.home-leftnav 标签class名中有 .el-menu--collapse 该样式不生效
 .home-leftnav:not(.el-menu--collapse){
   width: 250px;
 

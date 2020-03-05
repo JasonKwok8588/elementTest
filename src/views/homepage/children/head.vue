@@ -15,7 +15,9 @@
 </template>
 
 <script>
-import Bus from './bus'
+// 使用BUS完成兄弟主键通信
+import Bus from './bus';
+
 export default {
     data(){
         return{
@@ -24,6 +26,7 @@ export default {
     },
     methods:{
         changeBar(){
+            // 发送自定义事件
             this.isRetract = ! this.isRetract;
             Bus.$emit('retract',this.isRetract)
         },
