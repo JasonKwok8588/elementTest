@@ -21,17 +21,27 @@ import {loginApi} from '../../request/api';
 export default {
   methods: {
     loginForm() {
-      this.$refs.ruleForm.validate((res, resObj) => {
+      this.$refs.ruleForm.validate((res, resObj) => {// bool(校检结果) 和 obj(校检失败的字段项)
+        // console.log(res,resObj);
+        
         if (res) {
-          console.log("调用登录接口");
+          // console.log("调用登录接口");
           let formData = {
             username:this.ruleForm.username,
             password:this.ruleForm.pwd
           }
-          console.log(formData);
-          loginApi(formData);
+          // console.log(formData);
+          loginApi(formData).then(resObj => {
+            if(resObj.success){
+              this.$router.replace('/homepage')
+            }
+            // console.log(resObj.success);
+            
+          });
         } else {
+          // console.log('内容不符合定义规则');
           return false;
+        
         }
       });
     }

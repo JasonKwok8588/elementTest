@@ -1,5 +1,5 @@
 <template>
-  <div style=" width:120px; margin:0 auto;">
+  <div style=" width:120px; margin:200px auto;">
     <el-button @click="jumpToLogin" class="index-btn" >
       跳转登录页
     </el-button>
