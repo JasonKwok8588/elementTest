@@ -6,3 +6,5 @@ export const loginApi = param => request.post(pre + '/tokens', param);
 export const departmentsApi = param => request.get(pre + '/departments', { params: param });
 // 获取部门数据接口
 export const addDepartmentsApi = param => request.post(pre + '/departments', param);
+// 编辑部门接口
+export const editDepartmentsApi = param => request.put(pre + '/departments', param);

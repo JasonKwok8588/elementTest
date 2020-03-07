@@ -9,7 +9,7 @@ const instance = axios.create({
 instance.interceptors.request.use(config => {
     //请求时要干的事情
     //转换请求内容中的格式
-    if (config.method === 'post') {
+    if (config.method === 'post' || config.method === 'put') {
         config.data = config.data || '';
         config.data = qs.stringify(config.data);
     }
