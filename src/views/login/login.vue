@@ -16,32 +16,37 @@
 </template>
 
 <script>
-import {loginApi} from '../../request/api';
+import { loginApi } from "../../request/api";
 
 export default {
   methods: {
     loginForm() {
-      this.$refs.ruleForm.validate((res, resObj) => {// bool(校检结果) 和 obj(校检失败的字段项)
+      this.$refs.ruleForm.validate((res, resObj) => {
+        // bool(校检结果) 和 obj(校检失败的字段项)
         // console.log(res,resObj);
-        
+
         if (res) {
           // console.log("调用登录接口");
+          
+          //获取登录用户名密码
           let formData = {
-            username:this.ruleForm.username,
-            password:this.ruleForm.pwd
-          }
+            username: this.ruleForm.username,
+            password: this.ruleForm.pwd
+          };
           // console.log(formData);
           loginApi(formData).then(resObj => {
-            if(resObj.success){
-              this.$router.replace('/homepage')
+            // 请求成功后跳转路由
+            if (resObj.success) {
+              this.$router.replace("/department");
+              // 缓存 token  localStorage 本地缓存 （永久性缓存到本地） sessionStorage 会话缓存（窗口关闭时数据删除）
+              localStorage.setItem('token',resObj.data)
+              
             }
             // console.log(resObj.success);
-            
           });
         } else {
           // console.log('内容不符合定义规则');
           return false;
-        
         }
       });
     }
