@@ -12,6 +12,9 @@ instance.interceptors.request.use(config => {
     if (config.method === 'post' || config.method === 'put') {
         config.data = config.data || '';
         config.data = qs.stringify(config.data);
+    } else if (config.method === 'get' || config.method === 'delete') {
+        config.params = config.params || {},
+            config.params.token = localStorage.getItem('token')
     }
     return config;
 }, error => {
